@@ -7,7 +7,7 @@
                 
               
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="<?= base_url()?>articulo/post/<?= $fila->id ?>">
                         <h2 class="post-title">
                            <?= $fila->post ?>
                         </h2>
