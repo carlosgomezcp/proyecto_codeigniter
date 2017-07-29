@@ -133,4 +133,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 //se cargo el modelo post de forma automatica
-$autoload['model'] = array('post/post');
+$autoload['model'] = array('post/post','user/user');

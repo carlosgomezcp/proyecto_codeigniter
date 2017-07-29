@@ -14,7 +14,7 @@ class home extends CI_Controller {
     
 	public function index()
 	{
-            
+           $this->session->sess_destroy();
            $data= array('title'=>'GLORIADA');
            $this->load->view('/guest/head',$data);
            $data= array('app'=>'BLOG');
