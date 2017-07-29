@@ -14,16 +14,24 @@ class articulo extends CI_Controller {
     
 	public function post($id='')
 	{
-            $data= array('title'=>'GLORIADA');
+            $result= $this->post->getpostid($id);
+           
+            
+            $data= array('title'=>$result->post);
            $this->load->view('/guest/head',$data);
-           $data= array('app'=>'BLOG');
+            
+         
+           $data= array('app'=>'BLOG',$result->descripcion);
            $this->load->view('/guest/nav',$data);
-           $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther');
+           
+           
+           $data= array('post'=>$result->post,'description'=>$result->descripcion);
            $this->load->view('/guest/header',$data);
            
+           $data= array('post'=>$result->post,'contenido'=>$result->contenido);
+           $this->load->view('/guest/post',$data);
            
-           $result= $this->post->getpostid($id);
-           echo $result->post;
+           
             $this->load->view('/guest/footer',$data);
            
             
