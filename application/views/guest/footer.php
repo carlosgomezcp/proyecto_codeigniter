@@ -37,17 +37,17 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="<?= base_url() ?>plantilla/vendor/jquery/jquery.min.js"></script>
+  <!--  <script src="<?= base_url() ?>plantilla/vendor/jquery/jquery.min.js"></script>-->
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="<?= base_url() ?>plantilla/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <!-- <script src="<?= base_url() ?>plantilla/vendor/bootstrap/js/bootstrap.min.js"></script>-->
 
     <!-- Contact Form JavaScript -->
     <script src="<?= base_url() ?>plantilla/js/jqBootstrapValidation.js"></script>
     <script src="<?= base_url() ?>plantilla/js/contact_me.js"></script>
 
     <!-- Theme JavaScript -->
-    <script src="<?= base_url() ?>plantilla/js/clean-blog.min.js"></script>
+    <!--<script src="<?= base_url() ?>plantilla/js/clean-blog.min.js"></script>-->
 
 </body>
 
