@@ -27,7 +27,7 @@ class post extends CI_Model
 }
 
 
-public function getpostname($name='',$year='')
+public function getpostname($year='',$name='')
 {
 
          $result= $this->db->query("select * from post where year(fecha)='$year' and post like '$name' limit 1");

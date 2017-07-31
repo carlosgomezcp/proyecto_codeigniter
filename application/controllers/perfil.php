@@ -19,7 +19,7 @@ class perfil extends CI_Controller {
            $this->load->view('/guest/head',$data);
            $data= array('app'=>'ACTUALIZA TU PERFIL');
            $this->load->view('/guest/nav',$data);
-          $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther');
+          $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther','img'=>'home-bg.jpg');
            $this->load->view('/guest/header',$data);
            
             $this->load->view('/user/content',$data);

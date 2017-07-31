@@ -19,7 +19,7 @@ class home extends CI_Controller {
            $this->load->view('/guest/head',$data);
            $data= array('app'=>'BLOG');
            $this->load->view('/guest/nav',$data);
-          $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther');
+          $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther','img'=>'home-bg.jpg');
            $this->load->view('/guest/header',$data);
            
            

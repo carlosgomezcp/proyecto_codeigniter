@@ -3,11 +3,16 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <?php
-                foreach ($consulta->result() as $fila) {?>
-                
-              
+                foreach ($consulta->result() as $fila) {
+                    
+                    $date=datetime::createfromformat('Y-m-d',$fila->fecha);
+                    $year=$date->format("Y");
+                    $name= str_replace(" ","_",$fila->post);
+                    
+                    ?>
+                           
                 <div class="post-preview">
-                    <a href="<?= base_url()?>articulo/post/<?= $fila->id ?>">
+                    <a href="<?= base_url()?>articulo/post/<?= $year ?>/<?= $name ?>" >
                         <h2 class="post-title">
                            <?= $fila->post ?>
                         </h2>

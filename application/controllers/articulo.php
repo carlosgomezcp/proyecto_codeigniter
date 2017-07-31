@@ -15,8 +15,8 @@ class articulo extends CI_Controller {
         }
         
 
-    
-	public function post($id='')
+        //s comenta para hacer una nueva busqueda
+	/*public function post($id='')
 	{
             $result= $this->post->getpostid($id);
            
@@ -39,7 +39,41 @@ class articulo extends CI_Controller {
             $this->load->view('/guest/footer',$data);
            
             
+	}*/
+        
+        
+        public function post($year='',$name='')
+	{
+          //  $result= $this->post->getpostid($id);
+           
+            $result= $this->post->getpostname($year,$name);
+            
+            if($result==null)
+            {
+                echo "error";
+                return;
+            }
+            $data= array('title'=>$result->post);
+           $this->load->view('/guest/head',$data);
+            
+         
+           $data= array('app'=>'BLOG',$result->descripcion);
+           $this->load->view('/guest/nav',$data);
+           
+           
+           $data= array('post'=>$result->post,'description'=>$result->descripcion,'img'=>$result->img);
+           $this->load->view('/guest/header',$data);
+           
+           $data= array('post'=>$result->post,'contenido'=>$result->contenido);
+           $this->load->view('/guest/post',$data);
+           
+           
+            $this->load->view('/guest/footer',$data);
+           
+            
 	}
+        
+        
         
         public function nuevo()
         {
@@ -47,7 +81,7 @@ class articulo extends CI_Controller {
            $this->load->view('/guest/head',$data);
            $data= array('app'=>'BLOG');
            $this->load->view('/guest/nav',$data);
-            $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther');
+            $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther','img'=>'home-bg.jpg');
            $this->load->view('/guest/header',$data);
            $this->load->view('/user/nuevo');
             $this->load->view('/guest/footer',$data);
