@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <?php
-                foreach ($lista as $fila) {
+              foreach($lista as $fila) : 
                     
                     $date=datetime::createfromformat('Y-m-d',$fila->fecha);
                     $year=$date->format("Y");
@@ -23,17 +23,18 @@
                     <p class="post-meta">Posted by <a href="#">carlos</a>   <?= $fila->fecha ?></p>
                 </div>
                 <hr>
-                   <?php } ?>              <!-- Pager -->
+                   <?php endforeach ?>              <!-- Pager -->
                 <!--<ul class="pager">
                     <li class="next">
                         <a href="#">Older Posts &rarr;</a>
                     </li>
                
                 </ul>-->
-                
+                <div class="paginacion">
                 <?= $paginacion ?>
+                </div>
             </div>
         </div>
     </div>
-
-    <hr>
+   
+ 

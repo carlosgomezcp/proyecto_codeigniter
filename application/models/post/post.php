@@ -55,7 +55,34 @@ public function insert($post='')
        return false;
        
     }
+    
+ public function numrows()
+ {
+     //$this->db->get('blog')->num_rows();
+   return $this->db->count_all('post');
+ }
 
+ public function paginacion($page='')
+ {
+     //$this->db->get('blog')->num_rows();
+    return  $this->db->get('post',$page, $this->uri->segment(3));
+    
+   
+ }
+ 
+ function getNumFrases()
+{
+    return $this->db->count_all('post');
+}
+
+function getTodasFrases($limit,$start)
+{
+    $this->db->limit($limit,$start);
+    $resultado = $this->db->get('post');
+
+    return $resultado->result();
+}
+ 
   
 }
 
