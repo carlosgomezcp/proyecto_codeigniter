@@ -5,7 +5,13 @@ class perfil extends CI_Controller {
     
     public function __construct()
 	{
-                 parent::__construct();
+                
+                parent::__construct();
+                 if (!$this->session->userdata('login'))
+                    {
+                     
+                     header('location:'.base_url());
+                    }
 		//se comente porque ya se llama diectamente en config autoload  model	
 		//$this->load->model('post/post');
                  //helper llamado bosstrap que se descargo 

@@ -60,6 +60,11 @@ class articulo extends CI_Controller {
            $data= array('app'=>'BLOG',$result->descripcion);
            $this->load->view('/guest/nav',$data);
            
+            if(!isset($result->img)|| $result->img=="")
+            {
+                $result->img ="home-bg.jpg";
+                
+            }
            
            $data= array('post'=>$result->post,'description'=>$result->descripcion,'img'=>$result->img);
            $this->load->view('/guest/header',$data);
@@ -77,7 +82,13 @@ class articulo extends CI_Controller {
         
         public function nuevo()
         {
-             $data= array('title'=>'Nuevo');
+            if (!$this->session->userdata('login'))
+                    {
+                     
+                     header('location:'.base_url());
+                    }
+            
+            $data= array('title'=>'Nuevo');
            $this->load->view('/guest/head',$data);
            $data= array('app'=>'BLOG');
            $this->load->view('/guest/nav',$data);
@@ -91,7 +102,13 @@ class articulo extends CI_Controller {
         
         public function insert()
         {
+            if (!$this->session->userdata('login'))
+                    {
+                     
+                     header('location:'.base_url());
+                    }
             
+
             //se captura todos los elementos del formulario
             $post=$this->input->post();
            
