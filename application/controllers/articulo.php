@@ -127,6 +127,81 @@ class articulo extends CI_Controller {
                 }
         }
         
+        public function delete()
+        {
+            $post=$this->input->post();
+            $postname=$post["postname"];
+            $id=$post["id"];
+            //echo  $id;
+            //echo  "delete from post where post='$postname'";
+            $query="delete from post where post='$postname'";
+            if($this->db->query($query))
+            {
+               echo $id;
+
+            }else{
+                return false;
+            }
+        }
+        
+        public function modificar($year='',$name='')
+	{
+          //  $result= $this->post->getpostid($id);
+           
+            $result= $this->post->getpostname($year,$name);
+           
+             if($result==null)
+            {
+                echo "error";
+                return;
+            }
+            $data= array('title'=>$result->post);
+           $this->load->view('/guest/head',$data);
+            
+         
+           $data= array('app'=>'BLOG',$result->descripcion);
+           $this->load->view('/guest/nav',$data);
+           
+            if(!isset($result->img)|| $result->img=="")
+            {
+                $result->img ="home-bg.jpg";
+                
+            }
+           
+           $data= array('post'=>$result->post,'description'=>$result->descripcion,'img'=>$result->img);
+           $this->load->view('/guest/header',$data);
+           $data= array('post'=>$result->post,'contenido'=>$result->contenido);
+           $data["row"]=$result;
+           $this->load->view('/user/modificar',$data);
+           
+           
+            $this->load->view('/guest/footer',$data);
+           
+           
+            
+            
+	}
+        
+        
+        
+        public function actualizar()
+        {
+            $post=$this->input->post();
+            $data["post"]=$post["titulo"];
+            $data["descripcion"]=$post["descripcion"];
+             $data["contenido"]=$post["contenido"];
+           //  $datos=array('name'=>$data["nombre"],'user'=>$data["user"],'email'=>$data["email"],'password'=>$data["clave"]);
+             //print_r($post);
+            $id=$post["id"];
+            $this->db->where('id',$id);
+            if($this->db->update('post',$data)){
+                header('location:'.base_url()."perfil");
+            } else {
+            echo "no se puede actualizar";
+            }
+        }
+        
+        
         
        
         

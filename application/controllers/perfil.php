@@ -27,7 +27,8 @@ class perfil extends CI_Controller {
            $this->load->view('/guest/nav',$data);
           $data= array('post'=>'sitio de prueba','description'=>'sitio realizado en codeinigther','img'=>'home-bg.jpg');
            $this->load->view('/guest/header',$data);
-           
+           $data["post"]= $this->post->getpost();
+           $data["id"]="";
             $this->load->view('/user/content',$data);
             $this->load->view('/guest/footer');
         }
