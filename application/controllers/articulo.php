@@ -161,19 +161,19 @@ class articulo extends CI_Controller {
          
            $data= array('app'=>'BLOG',$result->descripcion);
            $this->load->view('/guest/nav',$data);
-           
+           //se comenta para habilitar el formulario multipar
             if(!isset($result->img)|| $result->img=="")
             {
                 $result->img ="home-bg.jpg";
                 
             }
-           
-           $data= array('post'=>$result->post,'description'=>$result->descripcion,'img'=>$result->img);
-           $this->load->view('/guest/header',$data);
-           $data= array('post'=>$result->post,'contenido'=>$result->contenido);
+           //se comenta para la vista modificr2
+           //$data= array('post'=>$result->post,'description'=>$result->descripcion,'img'=>$result->img);
+           //$this->load->view('/guest/header',$data);
+           $data= array('post'=>$result->post,'contenido'=>$result->contenido,'img'=>$result->img);
            $data["row"]=$result;
-           $this->load->view('/user/modificar',$data);
-           
+           //$this->load->view('/user/modificar',$data);
+           $this->load->view('/user/modificar2',$data);
            
             $this->load->view('/guest/footer',$data);
            
@@ -201,6 +201,30 @@ class articulo extends CI_Controller {
             }
         }
         
+        public function actualizarImg()
+        {
+            
+            $file_name=$this->file->UploadImage('./public/img/','error de carga de imagen');
+            $post=$this->input->post();
+            if($file_name==null)
+            {
+                echo false;
+                return;
+                
+                
+            }
+           //  $datos=array('name'=>$data["nombre"],'user'=>$data["user"],'email'=>$data["email"],'password'=>$data["clave"]);
+             //print_r($post);
+            $id=$post["id"];
+            $this->db->where('id',$id);
+            $data["img"]=$file_name;
+            if($this->db->update('post',$data)){
+               echo base_url('public/img')."/".$file_name;
+                
+            } else {
+            echo false;
+            }
+        }
         
         
        
